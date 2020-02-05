@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="theme-color" content="#C48BC4"> <!-- Chrome, Firefox OS and Opera -->
+    <meta name="msapplication-navbutton-color" content="#C48BC4"> <!-- Windows Phone -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#C48BC4"> <!-- iOS Safari -->
+
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-retina.png">
+
+    <!-- JQuery -->
+    <script src="/snapfire/js/jquery-3.4.1.min.js"></script>
+    <script src="/insp/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    
+    <script src="/insp/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="/insp/js/plugins/dataTables/datdota.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+    <link href="https://cdn.datatables.net/fixedcolumns/3.2.2/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+
+    
+    <link href="/insp/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="/snapfire/semantic.min.css">
+    <script src="/snapfire/semantic.min.js"></script>
+
+    
+    <script src="/insp/js/plugins/iCheck/icheck.min.js"></script>
+    <link href="/insp/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    
+    <script src="/insp/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <link href="/insp/css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+    <link href="/insp/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+
+    
+    <script src="/insp/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <link href="/insp/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+
+    <title>  datdota &#187; Match Length Distributions </title>
+    
+
+    <meta name="layout" content="snapfire"/>
+    
+
+
+    
+
+
+</head>
+
+<body>
+
+
+
+<div class="ui container">
+    <div class="ui sidebar inverted vertical menu visible">
+        <div class="item">
+            <a href="/" class="ui logo icon image"><img src="/images/logos/datdota_logo_medium.png" height="63" width="156" /></a>
+        </div>
+        <div class="item">
+            <div class="header">Leagues &amp; Matches</div>
+            <div class="menu">
+                <a href="/match-durations?default=true" class="active item">
+                    By Durations
+                </a>
+                <a href="/leagues?default=true" class=" item">
+                    League List
+                </a>
+                <a href="/splits?default=true" class=" item">
+                    Online vs LAN splits
+                </a>
+                <a href="/leagues/pedigrees?default=true" class=" item">
+                    LAN Pedigrees
+                </a>
+                <a href="/matches?tier=premium" class=" item">
+                    Recent Professional
+                </a>
+                <a href="/matches?tier=semipro" class=" item">
+                    Recent Semi-Pro
+                </a>
+                <a href="/matchfinder/classic?default=true" class=" item">
+                    Find by Teams | Heroes
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Players</div>
+            <div class="menu">
+                <a href="/players/performances?default=true" class=" item">
+                    Average Performances
+                </a>
+                <a href="/players/single-performance?default=true" class=" item">
+                    Single Performances
+                </a>
+                <a href="/players/rivalries?default=true" class=" item">
+                    Player Rivalries
+                </a>
+                <a href="/players/unique-heroes?default=true" class=" item">
+                    Most Unique Heroes
+                </a>
+                <a href="/players/squads?default=true" class=" item">
+                    Squads of Players
+                </a>
+                <a href="/players/records?default=true" class=" item">
+                    Player Records
+                </a>
+                <a href="/players/hero-combos?default=true" class=" item">
+                    By Player-Hero Combo
+                </a>
+                <a href="/players/teams?default=true" class=" item">
+                    By Player-Team Combo
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Teams</div>
+            <div class="menu">
+                <a href="/teams/performances?default=true" class=" item">
+                    Average Performances
+                </a>
+                <a href="/teams/unique-heroes?default=true" class=" item">
+                    Most Unique Heroes
+                </a>
+                <a href="/teams/head-to-head?default=true" class=" item">
+                    Head To Head
+                </a>
+                <a href="/ratings" class=" item">
+                    Team Ratings
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Heroes</div>
+            <div class="menu">
+                <a href="/drafts?default=true" class=" item">
+                    Drafts
+                </a>
+                <a href="/heroes/performances?default=true" class=" item">
+                    Average Performances
+                </a>
+                <a href="/heroes/elo?default=true" class=" item">
+                    Pairs, Trips, ...
+                </a>
+                <a href="/heroes/frequent-players?default=true" class=" item">
+                    Most Played By Player
+                </a>
+                <a href="/heroes/head-to-head-elo?default=true" class=" item">
+                    Hero vs Hero Matchups
+                </a>
+                <a href="/heroes/elo-by-phase?default=true" class=" item">
+                    Perf. by Draft Pick
+                </a>
+                <a href="/ability/builds?default=true" class=" item">
+                    Skill Builds
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Win Expectancy</div>
+            <div class="menu">
+                <a href="/win-expectancy/networth?default=true" class=" item">
+                    By Net Worth Diff
+                </a>
+                <a href="/win-expectancy/xp?default=true" class=" item">
+                    By XP Diff
+                </a>
+                <a href="/win-expectancy/kills?default=true" class=" item">
+                    By Kill Diff
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Items</div>
+            <div class="menu">
+                <a href="/items/distribution?default=true" class=" item">
+                    Pickups By Time
+                </a>
+                <a href="/items/averages?default=true" class=" item">
+                    Averages Purchase Info
+                </a>
+                <a href="/items/progression?default=true" class=" item">
+                    Build Progression
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Meta</div>
+            <div class="menu">
+                <a href="/factions/overviews?default=true" class=" item">
+                    Faction Stats
+                </a>
+                <a href="/lanes/compositions?default=true" class=" item">
+                    Laning Configuration
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Game Events</div>
+            <div class="menu">
+                <a href="/building/deaths?default=true" class=" item">
+                    Buildings Dying
+                </a>
+                <a href="/crits?default=true" class=" item">
+                    Big Crits
+                </a>
+                <a href="/events/hero-deaths?default=true" class=" item">
+                    Hero Deaths
+                </a>
+                <a href="/events/hero-kills?default=true" class=" item">
+                    Hero Kills
+                </a>
+                <a href="/events/wards?default=true" class=" item">
+                    Wards Placed
+                </a>
+                <a href="/events/runes?default=true" class=" item">
+                    Runes Picked Up
+                </a>
+                <a href="/events/courier-deaths?default=true" class=" item">
+                    Courier Deaths
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">Random Trivia</div>
+            <div class="menu">
+                <a href="/casters?default=true" class=" item">
+                    Caster Stats
+                </a>
+                <a href="/trivia/streaks?default=true" class=" item">
+                    Longest Win Streaks
+                </a>
+                <a href="/trivia/best-runs?default=true" class=" item">
+                    Best Fixed-Period Results
+                </a>
+                <a href="/trivia/akke?default=true" class=" item">
+                    The Akke Award
+                </a>
+                <a href="/trivia/maelk?default=true" class=" item">
+                    The Maelk Award
+                </a>
+                <a href="/trivia/cty?default=true" class=" item">
+                    The CTY Award
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <a href="/frames?default=true" class=" item">
+                Frames
+            </a>
+        </div>
+        <div class="item">
+            <a href="/about" class=" item">
+                About Us
+            </a>
+        </div>
+    </div>
+
+    <div class="ui container">
+            
+<h2 style="margin: 0.4em auto;">Match Length Distributions</h2>
+<hr style="margin-bottom: 0.65em;">
+
+<div>
+    <form method="get" class="sixteen wide">
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h3>League Filters</h3>
+
+<div class="ui grid">
+    <div class="eight wide column">
+        <label style="width: 90%;" class="control-label">What League (ticket) is it in?</label>
+        <select name="leagues" id="leagues" class="league-search" multiple="multiple" style="width: 90%">
+            <option></option>
+            
+        </select>
+    </div>
+
+    <div class="seven wide column">
+        <label style="width: 90%;" class="control-label">What Event is the game from?</label>
+        <select name="splits" id="splits" class="splits-search" multiple="multiple" style="width: 90%">
+            <option></option>
+            
+        </select>
+    </div>
+
+    <div class="eight wide column">
+        <label class="control-label">Event Tier <br/><small class="text-navy">What tier of event is this?</small></label>
+
+        <div style="margin-top: 0.8em" class="">
+            
+            <label class="checkbox-inline i-checks"> <input type="checkbox" checked=&quot;&quot; value="1" name="tier">&nbsp;Premium </label>
+            <label class="checkbox-inline i-checks"> <input type="checkbox" checked=&quot;&quot; value="2" name="tier">&nbsp;Professional </label>
+            <label class="checkbox-inline i-checks"> <input type="checkbox"  value="3" name="tier">&nbsp;Semi-pro </label>
+        </div>
+    </div>
+
+    <div class="eight wide column">
+        <label class="control-label">Valve Event <br/><small class="text-navy">Is this a Valve event?</small></label>
+        <div style="margin-top: 0.8em" class="">
+            
+            <span class="i-checks"><label> <input type="radio"  value="yes" name="valve-event"> <i></i>&nbsp;&nbsp;Yes &nbsp;&nbsp;</label></span>
+            <span class="i-checks"><label> <input type="radio"  value="no" name="valve-event"><i></i>&nbsp;&nbsp; No &nbsp;&nbsp;</label></span>
+            <span class="i-checks"><label> <input type="radio" checked=&quot;&quot; value="does-not-matter" name="valve-event"> <i></i>&nbsp;&nbsp;Doesn't Matter &nbsp;&nbsp; </label></span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+
+//        start of leagues
+
+        function getTier(tier) {
+            if (tier == 1) {
+                return "Premium"
+            }
+            if (tier == 2) {
+                return "Professional"
+            }
+            if (tier == 3) {
+                return "Semi-pro"
+            }
+            return "Unknown"
+        }
+
+        function  formatResult(league) {
+            if (!league.id) {
+                return '<span>Searching ...</span>';
+            }
+            var $lg = '<span>' +
+                '[' + getTier(league.tier) + '] ' +
+                league.text +
+                ' (id: ' + league.id + ')' +
+                '</span>';
+
+            return $lg;
+        }
+
+        function formatSelection(league) {
+            var $lg = '<span>' +
+                league.text +
+                '</span>';
+
+            return $lg;
+        }
+
+        var leagues = $( "#leagues" ).select2({
+            ajax: {
+                url: '/api/autocomplete/leagues',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (res) {
+                    return {
+                        results: res.data.leagues.map(function(l) {
+                            return {
+                                id: l.league_id,
+                                text: l.name,
+                                tier: l.tier
+                            }
+                        })
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 2,
+            templateResult: formatResult,
+            templateSelection: formatSelection
+        });
+
+//        end of leagues
+//        start of splits
+
+        function formatSplit(split) {
+            return '<span>' +
+                split.text +
+                '</span>';
+        }
+
+        var splits = $( "#splits" ).select2({
+            ajax: {
+                url: '/api/autocomplete/splits',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (res) {
+                    return {
+                        results: res.data.splits.map(function(s) {
+                            return {
+                                id: s.split_id,
+                                text: s.name
+                            }
+                        })
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; },
+            minimumInputLength: 2,
+            templateResult: formatSplit,
+            templateSelection: formatSplit
+        });
+
+//        end of splits
+    });
+</script>
+
+
+                
+<h3>Team Filters</h3>
+
+
+<div class="ui grid">
+    <div class="sixteen wide column">
+        <label style="width: 90%;" class="control-label">Which teams to search for (at least one must appear)</label>
+        <select name="teams" id="teams" class="league-search" multiple="multiple" style="width: 90%">
+            <option></option>
+            
+                <option selected="selected" value="1838315">Team Secret</option>
+            
+        </select>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+
+        function  formatResult(team) {
+            if (!team.id) {
+                return '<span>Searching ...</span>';
+            }
+            var $lg = '<span>' +
+                    '[' + team.tag + '] ' +
+                    team.text +
+                    ' (id: ' + team.id + ')' +
+                    '</span>';
+
+            return $lg;
+        };
+
+        function formatSelection(team) {
+            var $lg = '<span>' +
+                    team.text +
+                    '</span>';
+
+            return $lg;
+        };
+
+        var teams = $( "#teams" ).select2({
+            ajax: {
+                url: '/api/autocomplete/teams',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (res) {
+                    return {
+                        results: res.data.teams.map(function(l) {
+                            return {
+                                id: l.team_id,
+                                text: l.name,
+                                tag: l.tag
+                            }
+                        })
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 2,
+            templateResult: formatResult,
+            templateSelection: formatSelection
+        });
+    });
+</script>
+
+            </div>
+
+            <div class="eight wide column">
+                <h3>Match Filters</h3>
+
+<div class="ui grid">
+    <div class="eight wide column">
+        <label>Patch <br/><small class="text-navy">Which patches are you interested in? (Use Ctrl to multiselect)</small></label><br>
+        
+        <select multiple="true" name="patch" id="patch" class="form-control m-b" style="height: 14em; width: 75%;" >
+<option value="7.23" selected="selected" >7.23</option>
+<option value="7.22" >7.22</option>
+<option value="7.21" >7.21</option>
+<option value="7.20" >7.20</option>
+<option value="7.19" >7.19</option>
+<option value="7.18" >7.18</option>
+<option value="7.17" >7.17</option>
+<option value="7.16" >7.16</option>
+<option value="7.15" >7.15</option>
+<option value="7.14" >7.14</option>
+<option value="7.13" >7.13</option>
+<option value="7.12" >7.12</option>
+<option value="7.11" >7.11</option>
+<option value="7.10" >7.10</option>
+<option value="7.09" >7.09</option>
+<option value="7.08" >7.08</option>
+<option value="7.07" >7.07</option>
+<option value="7.06" >7.06</option>
+<option value="7.05" >7.05</option>
+<option value="7.04" >7.04</option>
+<option value="7.03" >7.03</option>
+<option value="7.02" >7.02</option>
+<option value="7.01" >7.01</option>
+<option value="7.00" >7.00</option>
+<option value="6.88" >6.88</option>
+<option value="6.87" >6.87</option>
+<option value="6.86" >6.86</option>
+<option value="6.85" >6.85</option>
+<option value="6.84" >6.84</option>
+<option value="6.83" >6.83</option>
+<option value="6.82" >6.82</option>
+<option value="6.81" >6.81</option>
+<option value="6.80" >6.80</option>
+<option value="6.79" >6.79</option>
+<option value="6.78" >6.78</option>
+<option value="6.77" >6.77</option>
+<option value="6.76" >6.76</option>
+<option value="6.75" >6.75</option>
+<option value="6.74" >6.74</option>
+</select>
+    </div>
+
+    <div class="eight wide column">
+        
+        <div>
+            <label >Event Type <small class="text-navy">What Type of Event Was It?</small></label><br>
+        <select name="split-type" id="split-type" class="splitType-search" multiple="multiple" style="width: 84%"></select>
+    </div>
+
+        
+        <div class="ui grid" style="margin-top: 0.3em;">
+            <div class="eight wide column">
+                <label>After Date <small class="text-navy">Inclusive</small></label><br>
+                <div class="input-group date" style="margin-left: 0.5em">
+                    
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="after" name="after" type="text" class="form-control" value="01/01/2011">
+                </div>
+            </div>
+
+            
+            <div class="eight wide column">
+                <label >Before Date <small class="text-navy">Inclusive</small></label><br>
+                <div class="input-group date" style="margin-left: 0.5em">
+                    
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="before" name="before" type="text" class="form-control" value="30/01/2020">
+                </div>
+            </div>
+        </div>
+
+        
+        <div style="margin-top: 0.8em;">
+            <label>Duration <br/><small class="text-navy">How long are the games you're interested in?</small></label><br>
+            <div>
+                <input name="duration" id="duration" data-from="0" data-to="200">
+            </div>
+            <div style="display: block;">
+                <span>
+                    <input style="width: 48%; margin-top: 1.4em;" type="text" name="duration-value-from" id="duration-value-from">
+                </span>
+                <span>
+                    <input style="width: 48%; margin-top: 1.4em;" type="text" name="duration-value-to" id="duration-value-to">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="clear:both"></div>
+
+<script>
+    
+    var splitTypeOptions = [
+        {'id': 'online', 'text': 'Online'},
+        {'id': 'lan', 'text': 'LAN'},
+        {'id': 'post-event', 'text': 'Post-Event'}
+    ];
+</script>
+<script>
+
+    var durfrom = $('#duration-value-from');
+    var durto = $('#duration-value-to');
+
+    var dur = $("#duration");
+
+    var durSlider = dur.ionRangeSlider({
+        min: 0,
+        max: 200,
+        type: 'double',
+        suffix: " mins",
+        maxPostfix: "+",
+        prettify: false,
+        hasGrid: true,
+        onChange: function (data) {
+            durfrom.val(data.fromNumber);
+            durto.val(data.toNumber);
+        },
+        onLoad: function (data) {
+            durfrom.val(data.fromNumber);
+            durto.val(data.toNumber);
+        }
+    });
+
+    var durValues = dur.data("ionRangeSlider");
+
+    $(document).ready(function () {
+        durfrom.keyup(function () {
+            durSlider.ionRangeSlider("update", {
+                from: durfrom.val()
+            });
+        });
+    });
+
+    $('#before').datepicker({
+        startView: 2,
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    $('#after').datepicker({
+        startView: 2,
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    $(document).ready(function() {
+        var _splitType = [];
+        var splitTypes = $( "#split-type" ).select2({
+            data: splitTypeOptions
+        });
+        splitTypes.val(_splitType).trigger("change");
+
+    });
+
+
+</script>
+            </div>
+            <div class="two wide column">
+                <button class="btn btn-dark" type="submit">Query</button>
+            </div>
+        </div>
+    </form>
+
+    
+        <h3>Results</h3>
+        <div class="ui grid">
+            <div class="row">
+                <span style="margin-left: 1em; margin-right: 3em;">Number of Matches: 11</span>
+                <span style="margin-right: 3em;">Average Match: 36:18 (std. dev.: 09:27)</span>
+        </div>
+
+        <div class="row">
+            <div class="five wide column">
+                <h4>Match Length Distribution</h4>
+                <table id="distribution" class="table table-striped table-bordered table-hover data-table">
+                    <thead>
+                    <tr>
+                        <th>Minute</th>
+                        <th># Ending</th>
+                        <th>Percentile</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    
+                        
+                        
+                            
+                            <tr>
+                                <td>16</td>
+                                <td>1</td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>17</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>18</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>19</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>20</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>21</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>22</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>23</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>24</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>25</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>26</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>27</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>28</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>29</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>30</td>
+                                <td></td>
+                                <td>9.09%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>31</td>
+                                <td>1</td>
+                                <td>18.18%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>32</td>
+                                <td>1</td>
+                                <td>27.27%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>33</td>
+                                <td>1</td>
+                                <td>36.36%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>34</td>
+                                <td></td>
+                                <td>36.36%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>35</td>
+                                <td>1</td>
+                                <td>45.45%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>36</td>
+                                <td>2</td>
+                                <td>63.64%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>37</td>
+                                <td>2</td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>38</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>39</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>40</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>41</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>42</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>43</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>44</td>
+                                <td></td>
+                                <td>81.82%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>45</td>
+                                <td>1</td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>46</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>47</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>48</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>49</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>50</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>51</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>52</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>53</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>54</td>
+                                <td></td>
+                                <td>90.91%</td>
+                            </tr>
+                        
+                            
+                            <tr>
+                                <td>55</td>
+                                <td>1</td>
+                                <td>100.00%</td>
+                            </tr>
+                        
+                    
+
+                    </tbody>
+                </table>
+            </div>
+
+            
+                <div class="five wide column">
+
+                    <h4>Shortest Games</h4>
+                    <table id="shortest" class="table table-striped table-bordered table-hover ctr">
+                        <thead>
+                        <tr>
+                            <th>Match</th>
+                            <th>Teams</th>
+                            <th>Duration</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        
+                        
+                            <tr>
+                                <td><a href="/matches/5138736880">5138736880</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/111474">Alliance</a>
+                                        
+                                    
+                                </td>
+                                <td>16:32</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138447201">5138447201</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/6685591">ViKin.gg</a>
+                                        
+                                    
+                                </td>
+                                <td>31:56</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138522501">5138522501</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/6685591">ViKin.gg</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>32:26</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137105566">5137105566</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/7101094">Wind and Rain</a>
+                                        
+                                    
+                                </td>
+                                <td>33:57</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5133784123">5133784123</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7553952">Chicken Fighters !</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>35:38</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137459216">5137459216</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/7554663">SworDDarK-</a>
+                                        
+                                    
+                                </td>
+                                <td>36:07</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137192050">5137192050</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7101094">Wind and Rain</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>36:53</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137399173">5137399173</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7554663">SworDDarK-</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>37:10</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5133859027">5133859027</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/7553952">Chicken Fighters !</a>
+                                        
+                                    
+                                </td>
+                                <td>37:50</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5212542757">5212542757</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/39">Evil Geniuses</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>45:08</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138773034">5138773034</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/111474">Alliance</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>55:50</td>
+                            </tr>
+                        
+
+                        </tbody>
+                    </table>
+
+                </div>
+            
+                <div class="five wide column">
+
+                    <h4>Longest Games</h4>
+                    <table id="longest" class="table table-striped table-bordered table-hover ctr">
+                        <thead>
+                        <tr>
+                            <th>Match</th>
+                            <th>Teams</th>
+                            <th>Duration</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        
+                        
+                            <tr>
+                                <td><a href="/matches/5138773034">5138773034</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/111474">Alliance</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>55:50</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5212542757">5212542757</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/39">Evil Geniuses</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>45:08</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5133859027">5133859027</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7553952">Chicken Fighters !</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>37:50</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137399173">5137399173</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7554663">SworDDarK-</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>37:10</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137192050">5137192050</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/7101094">Wind and Rain</a>
+                                        
+                                    
+                                </td>
+                                <td>36:53</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137459216">5137459216</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/7554663">SworDDarK-</a>
+                                        
+                                    
+                                </td>
+                                <td>36:07</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5133784123">5133784123</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7553952">Chicken Fighters !</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>35:38</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5137105566">5137105566</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/7101094">Wind and Rain</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>33:57</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138522501">5138522501</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/6685591">ViKin.gg</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>32:26</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138447201">5138447201</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/6685591">ViKin.gg</a>
+                                        ,
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        
+                                    
+                                </td>
+                                <td>31:56</td>
+                            </tr>
+                        
+                            <tr>
+                                <td><a href="/matches/5138736880">5138736880</a></td>
+                                <td>
+                                    
+                                        <a href="/teams/1838315">Team Secret</a>
+                                        ,
+                                    
+                                        <a href="/teams/111474">Alliance</a>
+                                        
+                                    
+                                </td>
+                                <td>16:32</td>
+                            </tr>
+                        
+
+                        </tbody>
+                    </table>
+
+                </div>
+            
+        </div>
+    
+
+
+</div>
+
+    <script>
+        $(document).ready(function(){
+
+            $('.data-table').DataTable({
+                dom: "<'row'<'col-sm-5'B><'col-sm-7 text-right'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                pageLength: 25,
+                responsive: true,
+                order: [[0, 'asc']],
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'pdf', orientation: 'landscape' }
+                ]
+            });
+
+            $('#shortest').DataTable({
+                dom: "<'row'<'col-sm-5'B><'col-sm-7 text-right'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                pageLength: 25,
+                responsive: true,
+                order: [[2, 'asc']],
+                columnDefs: [
+                    { type: 'ddduration', targets: 2 }
+                ],
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'pdf', orientation: 'landscape' }
+                ]
+            });
+
+            $('#longest').DataTable({
+                dom: "<'row'<'col-sm-5'B><'col-sm-7 text-right'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                pageLength: 25,
+                responsive: false,
+                order: [[2, 'desc']],
+                columnDefs: [
+                    { type: 'ddduration', targets: 2 }
+                ],
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'pdf', orientation: 'landscape' }
+                ]
+            });
+
+        });
+
+        $('.data-table th').css('text-align', 'center');
+        $('.data-table td').css('vertical-align', 'middle').css('text-align', 'center');
+
+        $('.ctr th').css('text-align', 'center');
+        $('.ctr td').css('vertical-align', 'middle').css('text-align', 'center');
+
+
+
+    </script>
+
+
+    </div>
+
+    <div class="ui black footer vertical segment sticky">
+        <div class="pull-right">
+            <strong>
+                60139
+            </strong> total matches.
+            <strong>
+                13687
+            </strong> teams.
+            <strong>
+                3250
+            </strong> leagues.
+            <strong>
+                2405588
+            </strong> rating points.
+            <strong>
+                6762700
+            </strong> data frames.
+        </div>
+        <div>
+            <strong>Copyright</strong>
+            datdota &copy; 2017 | Follow us! &nbsp;
+            <a href="https://twitter.com/datdota" target="_blank" rel="noreferrer"><i class="fa fa-lg fa-twitter"></i></a>&nbsp;&nbsp;
+            <a href="https://www.facebook.com/datdota" target="_blank" rel="noreferrer"><i class="fa fa-lg fa-facebook"></i></a>&nbsp;&nbsp;
+            <a href="https://discord.gg/datdota" target="_blank" rel="noreferrer"><img src="/images/discord.png" class="datdota-icon"/></a>&nbsp;&nbsp;
+            <a href="https://medium.com/datdota/latest" target="_blank" rel="noreferrer"><i class="fa fa-lg fa-medium"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            Powered by <a href="https://store.steampowered.com/software/" target="_blank" rel="noreferrer"><i class="fa fa-lg fa-steam"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            Parsing: <a href="https://github.com/skadistats/clarity/" target="_blank" rel="noreferrer">clarity</a> &amp; <a href="https://github.com/ButterflyStats/butterfly" target="_blank" rel="noreferrer">butterfly</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+
+            
+            
+        &nbsp;&nbsp;</div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-87328859-1', 'auto');
+    ga('send', 'pageview');
+
+
+</script>
+</body>
+</html>

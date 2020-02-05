@@ -1,0 +1,46 @@
+User-agent: *
+Disallow: /administrator/
+Disallow: /real_funny/see_you_at/fuck_youjj/
+Disallow: /wp-admin/
+
+User-agent:  Mozilla/5.0 (compatible; AhrefsBot/5.2; +http://ahrefs.com/robot/)
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: bingbot
+User-agent: msnbot
+Crawl-delay: 30
+
+User-agent: coccocbot-web
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Sogou blog
+User-agent: Sogou inst spider
+User-agent: Sogou News Spider
+User-agent: Sogou Orion spider
+User-agent: Sogou spider2
+User-agent: Sogou web spider
+Disallow: /

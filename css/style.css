@@ -1,0 +1,46 @@
+.datdota-icon {
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    height: 20px;
+    width: 24px;
+}
+
+.pull-right {
+    padding-right: 15px;
+    padding-left: 0;
+    text-align: right;
+    border-right: 5px solid #eee;
+    border-left: 0;
+}
+
+/*Various labels and pulls*/
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label-info {
+    background-color: #5bc0de;
+}
+.label-info[href]:hover,
+.label-info[href]:focus {
+    background-color: #31b0d5;
+}
+
+.megapad {
+    /*border-spacing: 10px;*/
+    /*border-collapse: separate;*/
+}
+
+.megapad td {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+}
